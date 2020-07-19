@@ -1,0 +1,18 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.1"}
+        org.suskalo/discljord {:mvn/version "1.1.1"}}
+ :aliases
+ {:dev {:extra-paths ["dev"]
+        :extra-deps {ch.qos.logback/logback-classic {:mvn/version "1.2.3"}}
+        :jvm-opts ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/slf4j-factory"]}
+  :test {:extra-paths ["test"]
+         :extra-deps {org.clojure/test.check {:mvn/version "1.0.0"}}}
+  :runner
+  {:extra-deps {com.cognitect/test-runner
+                {:git/url "https://github.com/cognitect-labs/test-runner"
+                 :sha "f7ef16dc3b8332b0d77bc0274578ad5270fbfedd"}}
+   :main-opts ["-m" "cognitect.test-runner"
+               "-d" "test"]}
+  :uberjar {:extra-deps {seancorfield/depstar {:mvn/version "1.0.94"}}
+            :main-opts ["-m" "hf.depstar.uberjar" "repl-bot.jar"
+                        "-C" "-m" "discljord-modbot.repl-bot"]}}}

@@ -1,0 +1,17 @@
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.eclipse.jetty" level="warn" />
+    <logger name="discljord.messaging" level="warn" />
+    <logger name="discljord.connections" level="info" />
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
