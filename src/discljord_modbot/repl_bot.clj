@@ -2,13 +2,12 @@
   "A bot for doing Discljord development in production!"
   (:require
    [clojure.java.io :as io]
-   [clojure.core.async :as a]
-   [discljord.connections :as conn]
-   [discljord.events :as e]
-   [discljord.events.middleware :as mdw]
-   [discljord.messaging :as msg]))
+   [clojure.string :as str]
+   [discljord-modbot.discljord :refer [run-bot]]))
+
+(defonce token (str/trim (slurp (io/resource "token.txt"))))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "Runs the bot from [[discljord-modbot.discljord/run-bot]]"
   [& args]
-  (println "Hello, World!"))
+  (run-bot token))
